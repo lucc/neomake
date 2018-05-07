@@ -144,8 +144,9 @@ function! neomake#debug#_get_info_lines() abort
             return '{}'
         endif
         let r = "{\n"
-        for [k, v] in items(a:d)
-            let r .= indent.'  ' . string(k).': '.s:pprint(v, indent . '  ').",\n"
+	" V can be a funcref so it has to be capital!
+        for [k, V] in items(a:d)
+            let r .= indent.'  ' . string(k).': '.s:pprint(V, indent . '  ').",\n"
         endfor
         let r .= indent.'}'
         return r
